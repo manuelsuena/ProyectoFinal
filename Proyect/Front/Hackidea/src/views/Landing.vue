@@ -52,7 +52,9 @@
              <button @click="addMensaje(index)"> enviar </button>
 
          <h2> Comentarios: </h2>
-        <div v-for="msg in msgs" :key="msg.id">  
+        <div class="coment" v-for="msg in msgs" :key="msg.id"> 
+            <p> <strong> Fecha: </strong> {{msg.fecha_creacion}}
+        </p> 
         <p>{{msg.mensaje}}</p>
        </div>
         </div>
@@ -325,6 +327,17 @@ button{
 }
 #idIdeas{
   color: transparent;
+}
+.coment{
+  width: 100%;
+  border: 1px solid black;
+  padding: 0.5rem;
+  margin: 1rem;
+  display: block;
+}
+.coment p {
+  display: grid-row 2;
+  
 }
 
 

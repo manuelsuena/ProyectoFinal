@@ -60,7 +60,7 @@ const { mensajeSchema } = require('../../validations/ideasvalidations');
         const [
           result
         ] = await connection.query(
-          `select id_usuario, id_idea, mensaje, id_comentario from comentario where id_idea= ?`,
+          `select id_usuario, id_idea, mensaje, id_comentario, fecha_creacion from comentario where id_idea= ?`,
           [id]
         );
     

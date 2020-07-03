@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
 import Error from '../views/Error.vue'
 //importamos la función de verificar si esta loggeado
-import { isLoggedIn } from "../api/utils";
+import { isLoggedIn } from "../api/utils.js";
 
 Vue.use(VueRouter)
 
@@ -111,7 +110,7 @@ Vue.use(VueRouter)
     name: 'Error',
     component: Error
   },
-]
+];
 
 const router = new VueRouter({
   routes
