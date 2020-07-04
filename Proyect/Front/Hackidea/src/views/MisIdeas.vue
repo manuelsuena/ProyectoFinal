@@ -33,7 +33,7 @@
 
             <button @click="showEditUser(index)"> modificar</button>
        <button @click="deleteIdea(index)"> Eliminar </button> 
-     
+           </div> 
 
       <div class="editData" v-show="showEdit">
       <p>Modifica tus ideas</p>
@@ -50,7 +50,7 @@
         
 
          </div>
-            </div> 
+          
 
 
      <div class="footer">
@@ -86,6 +86,7 @@ export default {
             newCategoria: '',
             newDescripcion: '',
             showIdea: true,
+            index:'',
             
            /*  showInicio:true, */
         }
@@ -111,6 +112,7 @@ export default {
       this.showIdea = true;
     },
         showEditUser(index){
+        this.index = index;
       this.showEdit = true;
       this.newTitulo = this.ideas[index].titulo;
       this.newCategoria = this.ideas[index].categoria;

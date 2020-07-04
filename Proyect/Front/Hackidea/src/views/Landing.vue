@@ -27,19 +27,19 @@
    <p> <strong> Categoria: </strong>  {{idea.categoria}}</p>
    <p>  <strong> Visitas: </strong> {{idea.visita}}</p>
    <p> <strong> Rating: </strong>   {{idea.avgRating}}</p>
+
    <button  @click="showIdeas(index)" > ver </button>
    
-
+     </div>
       <div class="IdeaInd" v-show="showIdeaInd">
 
           <div class="Usuario">
               <p> <strong> Nickname: </strong>  {{user.nickname}}</p>
               <p> <strong> miembro desde: </strong> {{user.fecha_creacion}} </p>
-             <button @click=" showComentar(index)"> comentar </button>
-            <button @click="showVoto(index)"> votar </button>
+                 <star-rating v-model = "rating" v-bind:star-size="25"> </star-rating>
             <button @click=" closeModal()"> atras </button>
-
-         
+          
+     
         <h2> 
             {{currentIdea.titulo}}
         </h2>
@@ -55,18 +55,19 @@
         <div class="coment" v-for="msg in msgs" :key="msg.id"> 
             <p> <strong> Fecha: </strong> {{msg.fecha_creacion}}
         </p> 
-        <p>{{msg.mensaje}}</p>
+        <p> {{msg.mensaje}}</p>
        </div>
         </div>
           </div>
            
-             <div class="rating" v-show="newRating">
+<!--              <div class="rating" v-show="newRating">
 
              <Label for="voto"> Voto: </Label>
              <input type="number" id="puntajes" name="puntajes" min="0" max="5" step="0.5" placeholder="nuevo voto"
              v-model="puntajes">
              <button @click="addVoto(index)"> enviar </button>
-            </div>
+            </div> -->
+            
      
 
              
@@ -77,7 +78,7 @@
              <button @click="addMensaje(index)"> enviar </button> -->
           
             
-        </div>
+       
  <FooterCustom> </FooterCustom>
   </div>
 </template>
@@ -89,11 +90,13 @@ import FooterCustom from '@/components/FooterCustom.vue'
 import axios from 'axios'
 import IdeasCustom from '@/components/IdeasCustom.vue'
 import Swal from "sweetalert2";
+import StarRating from 'vue-star-rating';
 export default {
     name: 'Landing',
     components:{
            FooterCustom,
            MenuCustom,
+           StarRating,
        },
     data(){
         return {
@@ -107,11 +110,11 @@ export default {
             newDescripcion: '',
             showIdeaInd: false,
             mensajes: '',
-            newRating: false,
-            puntajes: '',
+            rating: 0,
             visita: '',
             search: '',
             selectedId: Number,
+            index: '',
         }
     },
 computed:{
@@ -144,13 +147,15 @@ computed:{
         });
     },
      // mostrar modal
+    
           showIdeas(index) {
+            this.index = index;
       this.getIdeaInd(index);
       this.getComentarios(index);
       this.getUserInd(index);
       this. addVisita(index);
        this.showIdeaInd = true;
-       console.log(msg)
+      
     },
     
      // Funciones ver idea individual
@@ -171,7 +176,8 @@ computed:{
      // Funciones ver info del usuario de la idea
           getUserInd(index) {
       const self = this;
-       const id = self.ideas[index].id_idea;
+       const id = index;
+       console.log(id);
       const token = localStorage.getItem("token");
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       axios
@@ -199,20 +205,20 @@ computed:{
           console.error(error.response.data.message);
         });
     },
-     // Funcion ver modal voto
+/*      // Funcion ver modal voto
          showVoto(index) {
                this.newRating = true;
-    }, 
+    },  */
    
     // Funciones votar
             addVoto(index){
              var self = this
               const user = localStorage.getItem("id");
              const token = localStorage.getItem("token");
-              const id = self.ideas[index].id_idea;
+              const id = index;
              axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
              axios.post('http://localhost:3009/ideas/vote/' + id, {
-               puntaje: self.puntajes,
+               puntaje: rating,
              })
              .then(function (response){
                  console.log(response)  
@@ -298,8 +304,8 @@ computed:{
   width: 100%;
   background-image: url(../assets/backla.png);
     background-repeat: no-repeat;
-    background-size: 1700px 950px;
-    height: 950px;
+    background-size: 1700px 1500px;
+    height: 1500px;
 }
 #titulo{
     margin: 1rem;
@@ -339,6 +345,4 @@ button{
   display: grid-row 2;
   
 }
-
-
 </style>
