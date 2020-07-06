@@ -1,9 +1,9 @@
 <template>
-  <div class="main">
+  <div>
      <!-- Menú de la página  -->
-     <div class="menu">
+ 
   <MenuCustom> </MenuCustom>
-  </div>
+
 
 <!-- Se aplica el cambio de nombre-->
   <vue-headful title="About"
@@ -16,7 +16,7 @@
 <img src="../assets/fotom.png" alt="Foto del autor">
 
 <!--Un párrafo con información  -->
- <p> Para más información sobre el autor, consulte mis redes sociales en los siguientes link: </p>
+ <p> Para más información, consulte mis redes sociales en los siguientes link: </p>
 
  <!--Link de red social  -->
 
@@ -36,7 +36,7 @@
       <div class="footer">
       
       <FooterCustom>     </FooterCustom> 
-  </div>
+      </div>
    </div>
 </template>
 
@@ -67,33 +67,19 @@ export default {
 /*   width: 100%;
   background: cadetblue;
   color: black; */
-  .main {
-  width: 100%;
-  background-image: url(../assets/about.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 950px;
-    height: 950px;
-   color: white;
-   text-align: center;
-   font-size: 1.15rem;
-}
 
 a{
   margin: 2rem;
   padding: 1rem;
-  color: rgb(125, 226, 43);
+  color: rgb(101, 156, 219);
 }
 .footer{
-  margin-left: 37rem;
-    margin-top: 7rem;
-    color: white;
-    background: white;
-    width: 20%;
+  margin-top: 6rem; 
 }
-.menu {
-    margin-left: 37rem;
-    color: white;
-    background: white;
-    width: 25%;
+h2{
+    color: rgb(20, 93, 177);
+}
+p{
+  color: #242424;
 }
 </style>

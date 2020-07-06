@@ -67,7 +67,7 @@ export default {
         }
     },
 
-    // Funcióin validar y agregar usuarios
+    // Funcióin mostrar información del usuario
     methods: {
         getUser() {
       const self = this;
@@ -84,16 +84,22 @@ export default {
         });
     },
 
+     // Función cerrar modal
+
     closeModal(){
       this.showEdit = false;
     },
 
+         // Función abrir modal
+   
         showEditUser(index) {
       this.showEdit = true;
       this.newNombre = this.usuario.nombre;
       this.newApellidos = this.usuario.apellidos;
       this.newNickname = this.usuario.nickname;
     },
+
+    // Función  actualizar información del usuario
         updateUser() {
       const self = this;
       const data = localStorage.getItem("id");

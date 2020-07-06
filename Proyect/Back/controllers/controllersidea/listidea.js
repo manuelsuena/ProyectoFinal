@@ -32,7 +32,7 @@ async function listIdea(req, res, next) {
           from idea i
           LEFT  JOIN rating r on  i.id_idea = r.id_idea
           GROUP BY i.id_idea
-          order by i.fecha_creacion ASC`
+          order by i.fecha_creacion DESC`
         );
       }   
   

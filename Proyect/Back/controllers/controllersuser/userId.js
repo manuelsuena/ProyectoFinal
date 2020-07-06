@@ -13,7 +13,7 @@ async function getUser(req, res, next) {
     const [
       result
     ] = await connection.query(
-      `select id_usuario, nombre, apellidos, nickname, email, avatar from usuario where id_usuario=?`,
+      `select id_usuario, nombre, apellidos, nickname, email, miembro_desde from usuario where id_usuario=?`,
       [id]
     );
 
@@ -31,8 +31,8 @@ async function getUser(req, res, next) {
     role: userData.role,
     apellidos: userData.apellidos,
     nickname: userData.nickname,
-    avatar: userData.avatar,
     email: userData.email,
+    miembro_desde: userData.miembro_desde,
     };
 
 

@@ -46,8 +46,8 @@ async function newUser(req, res, next) {
     }
 
     await connection.query(
-     `INSERT INTO usuario (nombre, email, contrasena, apellidos, nickname,fecha_creacion, last_password_update, registration_code)
-      VALUES(?, ?, ?, ?, ?, NOW(), NOW(), ?) `,
+     `INSERT INTO usuario (nombre, email, contrasena, apellidos, nickname,fecha_creacion, last_password_update, registration_code, miembro_desde)
+      VALUES(?, ?, ?, ?, ?, NOW(), NOW(), ?, NOW()) `,
       [nombre, email, dbPassword, apellidos, nickname, registrationCode]
     );
 

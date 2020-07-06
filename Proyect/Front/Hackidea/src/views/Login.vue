@@ -9,10 +9,29 @@
        <div class="menus">
       <MenuCustom> </MenuCustom>
         </div>
+
+        <h2> LA UNIÓN HACE LA FUERZA </h2>
          
-     <h2> Iniciar sesión </h2>
+         <div>
+           <img src="../assets/paralogin.png" alt= "Imagen de Idea">
+           <img src="../assets/backla.png" alt= "Imagen de unión">
+         </div>
+
+         <h3> Comparte con nosotros tus  <strong> Ideas </strong> o <strong> Dudas, </strong>
+           la comunidad con sus comentarios los hará llegar a la meta eficientemente. </h3>
+
+          <p> Si ya estas registrado haz login, sino unete a nuestra comunidad.</p>
+  
+          <div id="botones">
+          <button @click="openModal()"> Login </button>
+          <button @click="showRegister()"> Registrarse </button>
+          </div>
+      
+     
        <!--Elementos HTML  -->
-    <div id="input"> 
+    <div class="modal" v-show="showLogin"> 
+      <div class="modalBox">
+      <h2> Iniciar sesión </h2>
      <p  v-show="required"> tienes datos aun por rellenar </p>
      <label for="Email"> Email:</label>
      <br>
@@ -24,6 +43,7 @@
     <br>
 
 <button @click="login()"> Entrar </button>
+ </div>
  </div>
 
  <br>
@@ -52,11 +72,33 @@ export default {
             contrasena: '',
            correctData: false,
             required: false,
+            showLogin: false,
          }
      },
       methods: {
+
+        
      // Función de logear
-        login(){
+
+      openModal(){
+      this.showLogin = true;
+    },
+       showRegister(){
+          this.$router.push("/register");
+       },
+           validatingData(){
+          if(this.email === ''|| 
+          this.contrasena === '' ) {
+              this.correctData = false // no enviar
+              this.required = true // se muestra mensaje
+          } else {
+              this.correctData = true // si enviar
+              this.required = false // no se muestra
+          }
+        },
+               login(email, contrasena){
+            this.validatingData() // se valida si hay datos
+             if(this.correctData === true){
              const self = this
              axios.post(('http://localhost:3009/user/login'),{
                  email: self.email,
@@ -69,13 +111,24 @@ export default {
                localStorage.setItem("id", response.data.data.id);
                 self.$router.push("/");
               })
-             .catch(function (error){
+        .catch(function (error){
                 console.log(error)
              })
-            
-        },
-      }
-}
+          Swal.fire({
+             icon: "success",
+             title: 'Usuario creado',
+             text: "Valida la cuenta para ingresar a la página "
+              })
+               } else {
+                Swal.fire({
+                 icon: 'error',
+                 title: 'Oops...',
+               text: 'Faltan campos por rellenar',
+                 })
+                }
+             }
+         }
+        }
 </script>
 
 <style scoped>
@@ -105,6 +158,11 @@ h2{
    color: rgb(20, 93, 177);
    margin-bottom: 4rem;
 }
+h3{
+   margin-top: 2rem;
+   color: rgb(20, 93, 177);
+   margin-bottom: 2rem;
+}
 #input {
     display: inline-block;
     width: 20%;
@@ -115,4 +173,49 @@ h2{
 .Footer{
   margin-top: 6rem;
 }
+/* .modal {
+   margin-top: -20rem;
+  position: relative;
+  background-color: #fefefe;
+  padding: 2rem;
+  border: 1px solid #888;
+   width: 70%; 
+  height: 30rem; 
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 1s;
+} */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 90%;
+}
+.modalBox {
+  overflow-y: auto;
+  background: #fefefe;
+  margin: 15rem auto;
+  margin-left: 18rem;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+  height: 500px;
+}
+img{
+  margin-right: 3rem ;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  width: 400px;
+  height: 300px;
+}
+p {
+  color: #242424;
+}
+#botones{
+  margin-top: 2rem;
+}
+
 </style>

@@ -14,6 +14,7 @@
  
    <ul class="comentarios" v-for="(coment, index) in coments" :key="coment.id">  
      <li>
+          <p class="fecha"> <strong>Fecha:</strong>  {{coment.mensaje_fecha}}</p>
           <p>{{coment.mensaje}}</p>
    <p id="id"> {{coment.id_comentario}}</p>
      <button @click="deleteMensajes(index)"> Eliminar </button>
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+
 /* Importamos los componentes que queremos utilizar en esta vista */
 import MenuCustom from '@/components/MenuCustom.vue'
 import FooterCustom from '@/components/FooterCustom.vue'
@@ -50,7 +52,7 @@ export default {
         }
     },
 
-    // Funcióin validar y agregar usuarios
+    // Funcióin mostrar los mensajes del usuario
     methods: {
         getMensajes() {
       const self = this;
@@ -67,6 +69,9 @@ export default {
           console.error(error.response.data.message);
         });
     },
+
+     // Funcióin eliminar los mensajes del usuario
+
         deleteMensajes(index) {
        const self = this;
       const data = self.coments[index].id_comentario;
@@ -130,6 +135,9 @@ ul {
 }
 .footer{
   margin-top: 10rem;
+}
+.fecha {
+ margin-left: 70rem;
 }
 </style>
 

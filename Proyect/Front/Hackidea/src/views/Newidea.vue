@@ -65,7 +65,7 @@ export default {
         }
     },
 
-    // Funcióin validar y agregar usuarios
+    // Función validar y agregar Idea
     methods: {
         validatingData(){
           if(this.categoria=== '' || 
@@ -114,6 +114,7 @@ export default {
                 }
              },
     
+     // Función dejar en blanco los input
         emptyFields(){
            this.categoria=''
             this.titulo=''

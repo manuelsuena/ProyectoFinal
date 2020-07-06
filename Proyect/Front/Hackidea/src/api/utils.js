@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt from "jwt-decode";
 // CONST -  API y Token
 const ENDPOINT = "http://localhost:3009";
 const AUTH_TOKEN_KEY = "authorization";
@@ -10,6 +11,11 @@ export function setAuthToken(token) {
   axios.defaults.headers.common["authorization"] = `Bearer ${token}`;
   //Lo enviamos a localStorage
   localStorage.setItem(AUTH_TOKEN_KEY, token);
+}
+
+// FUNCIÓN PARA COGER EL TOKEN
+export function getAuthToken() {
+  return localStorage.getItem("token");
 }
 
 // FUNCIÓN PARA CONSEGUIR LA FECHA DE EXPIRACIÓN DEL TOKEN
@@ -37,14 +43,11 @@ export function isLoggedIn() {
   let authToken = getAuthToken();
   return !!authToken && !isTokenExpired(authToken);
 }
-// FUNCIÓN PARA COGER EL TOKEN
-export function getAuthToken() {
-  return localStorage.getItem(AUTH_TOKEN_KEY);
-}
+
 
 // FUNCIÓN PARA RECUPERAR EL TIPO DE USUARIO DESDE EL LOCALSTORAGE
 export function getUserType() {
-  return localStorage.getItem("type");
+  return localStorage.getItem(ROLE);
 }
 
 // Funciones de limpiar del localStorage los datos
@@ -68,6 +71,14 @@ export function clearidName() {
 
 export function setIsName(isAdmin) {
   localStorage.setItem(nombre, nombre);
+}
+
+export function isLogged() {
+  const authToken = localStorage.getItem("token");
+  if (authToken) {
+    return true;
+  }
+  return false;
 }
 export function logOut() {
   clearId();

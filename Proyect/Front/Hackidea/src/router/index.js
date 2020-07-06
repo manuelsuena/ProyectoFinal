@@ -4,6 +4,7 @@ import Error from '../views/Error.vue'
 import Login from '../views/Login.vue';
 //importamos la función de verificar si esta loggeado
 import { isLoggedIn } from "../api/utils.js";
+import Swal from "sweetalert2";
 
 Vue.use(VueRouter)
 
@@ -50,7 +51,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
     meta: {
       //RUTA PRIVADA
-      allowAnonymous: true,
+      allowAnonymous: false,
       },
   },
   {
@@ -75,7 +76,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/MisIdeas.vue'),
     meta: {
       //RUTA PRIVADA
-      allowAnonymous: true,
+      allowAnonymous: false,
       },
   },
   {
@@ -87,7 +88,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/Miscomentarios.vue'),
     meta: {
       //RUTA PRIVADA
-      allowAnonymous: true,
+      allowAnonymous: false,
       },
   },
 
@@ -101,7 +102,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/Newidea.vue'),
     meta: {
       //RUTA PRIVADA
-      allowAnonymous: true,
+      allowAnonymous: false,
       },
 
   },
@@ -119,10 +120,10 @@ const router = new VueRouter({
 
 // COMPROBANDO CADA PÁGINA POR SI LA PERSONA ESTÁ LOGUEADA //
 // COMPROBAMOS LAS URLS Y ANALIZAMOS EL USUARIO
-router.beforeEach((to, from, next) => {
+ router.beforeEach((to, from, next) => { 
   //Si la ruta no es pública y el usuario no está logueado...
-  if (!to.meta.allowAnonymous && !isLoggedIn()) {
-    next({
+   if (!to.meta.allowAnonymous && !isLoggedIn()) {
+    next({ 
       //Lo redirigimos a la página de login
       path: "/login",
       query: { redirect: to.fullPath },
@@ -136,6 +137,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-});
+}); 
 
 export default router

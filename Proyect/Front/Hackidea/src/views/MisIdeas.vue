@@ -11,14 +11,7 @@
       
                <!--Elementos HTML  -->
    <h2> Mis Ideas  </h2>
-<!--      <ul class="ideas" v-for="(idea, index) in ideas" :key="idea.id">
-       <li>
-   <p class="id">{{idea.id_idea}}</p>
-   <h3> {{idea.titulo}}</h3>
-   <p> <strong> Categoria: </strong> {{idea.categoria}}</p>
-   <p> {{idea.descripcion}}</p>
-       <button @click="showEditUser(index)"> modificar</button>
-       <button @click="deleteIdea(index)"> Eliminar </button>  -->
+
   
   
     <div class="ideas"   v-for="(idea, index) in ideas" :key="idea.id">  
@@ -31,7 +24,7 @@
        <button @click="deleteIdea(index)"> Eliminar </button>  -->
 
 
-            <button @click="showEditUser(index)"> modificar</button>
+            <button @click="showEditIdea(index)"> modificar</button>
        <button @click="deleteIdea(index)"> Eliminar </button> 
            </div> 
 
@@ -84,13 +77,12 @@ export default {
             newTitulo: '',
             newCategoria: '',
             newDescripcion: '',
-            showIdea: true,
             index:'',
             
-           /*  showInicio:true, */
+          
         }
     },
-    // Funcióin validar y agregar usuarios
+    // Función mostrar ideas del usuario
     methods: {
         getIdea() {
       const self = this;
@@ -107,16 +99,19 @@ export default {
           console.error(error.response.data.message);
         });
     },
-          showIdeas(index) {
-      this.showIdea = true;
-    },
-        showEditUser(index){
+
+      // Función abrir modal
+
+       
+        showEditIdea(index){
         this.index = index;
       this.showEdit = true;
       this.newTitulo = this.ideas[index].titulo;
       this.newCategoria = this.ideas[index].categoria;
       this.newDescripcion = this.ideas[index].descripcion; 
     },
+     // Función modificar ideas del usuario
+
         updateIdea(index) {
       const self = this;
       const data = self.ideas[index].id_idea;
@@ -143,9 +138,14 @@ export default {
              text: "Ya puedes ver la modificación de tu idea."
               })
         },
+
+         // Función cerrar modal
         closeModal(){
           this.showEdit = false;
         },
+
+         // Función eliminar ideas del usuario
+
         deleteIdea(index) {
        const self = this;
       const data = self.ideas[index].id_idea;
@@ -181,7 +181,8 @@ export default {
   padding: 0.3rem;
   color: black;
   background-color: white;
-
+  margin-top: -1rem;
+  background: #fffaf6;
 }
 button{
     padding: 0.7rem;
@@ -195,13 +196,14 @@ button{
 h2{
     color: rgb(20, 93, 177);
     font-size: 2.25rem;
+    margin-top: 3rem;
 }
 .id{
   color: transparent;
   margin-bottom: -1rem;
 }
 .footer{
- margin-top: 6rem;
+ margin-top: 7rem;
 }
 h3{
   font-size: 1.35rem;

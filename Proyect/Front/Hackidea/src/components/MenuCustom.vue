@@ -3,11 +3,11 @@
   <div >
     <div id="nav">
        <img src="../assets/logofinal.png" alt="logo">
-      <router-link :to="{name:'Login'}"> Login</router-link>
-       <router-link :to="{ name: 'Register'}">Registro</router-link> 
-      <router-link :to="{name:'Landing'}" > Portada</router-link> 
-       <router-link :to="{name:'About'}"> About</router-link> 
-        <router-link :to="{name:'Newidea'}" > Newidea </router-link>
+      <router-link :to="{name:'Login'}" v-show="!checkLogin()"> HOME</router-link>
+       <router-link :to="{ name: 'Register'}">REGISTRO</router-link> 
+      <router-link :to="{name:'Landing'}" > PORTADA </router-link> 
+       <router-link :to="{name:'About'}"> ABOUT</router-link> 
+        <router-link :to="{name:'Newidea'}" class="new"> NEWIDEA </router-link>
        <div class="desplegable"> 
           <button class="botondesplegable"> Perfil</button>
           <div class="enlacesdesplegables">
@@ -16,7 +16,7 @@
        <router-link :to="{name:'Miscomentarios'}"> Miscomentarios</router-link> 
      </div>
         </div>
-           <button class="botonlogout" @click="logOutUser()"> Logout</button>
+           <button class="botonlogout" @click="logOutUser()" v-show="checkLogin()"> Logout</button>
        </div>
          
   </div>
@@ -115,4 +115,5 @@ box-shadow: inset 4em 5em #3725D3;
   padding: 0.5rem;
   font-size: 1rem;
 }
+
 </style>

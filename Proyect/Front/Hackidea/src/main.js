@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 Vue.component('vue-headful', vueHeadful);
 
 
+
 new Vue({
   router,
   render: h => h(App)

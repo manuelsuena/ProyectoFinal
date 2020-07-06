@@ -33,8 +33,8 @@ const { mensajeSchema } = require('../../validations/ideasvalidations');
       //comentario
       await connection.query(
         `
-        INSERT INTO comentario(id_idea, mensaje, fecha_creacion, id_usuario) 
-        VALUES(?, ?, now(), ?)`,
+        INSERT INTO comentario(id_idea, mensaje, fecha_creacion, id_usuario, mensaje_fecha) 
+        VALUES(?, ?, now(), ?, now())`,
         [id, mensaje, req.auth.id]
       );
   
@@ -60,7 +60,7 @@ const { mensajeSchema } = require('../../validations/ideasvalidations');
         const [
           result
         ] = await connection.query(
-          `select id_usuario, id_idea, mensaje, id_comentario, fecha_creacion from comentario where id_idea= ?`,
+          `select id_usuario, id_idea, mensaje, id_comentario, mensaje_fecha from comentario where id_idea= ?`,
           [id]
         );
     
@@ -166,7 +166,7 @@ const { mensajeSchema } = require('../../validations/ideasvalidations');
       const [
         result
       ] = await connection.query(
-        `select id_usuario, mensaje, id_comentario from comentario where id_usuario= ?`,
+        `select id_usuario, mensaje, id_comentario, mensaje_fecha from comentario where id_usuario= ?  order by mensaje_fecha DESC`,
         [id]
       );
   

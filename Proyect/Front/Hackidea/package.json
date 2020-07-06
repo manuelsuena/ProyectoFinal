@@ -16,6 +16,7 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "sweetalert2": "^9.15.2",
+    "v-rating": "^1.1.2",
     "vue": "^2.6.11",
     "vue-headful": "^2.1.0",
     "vue-router": "^3.2.0",
