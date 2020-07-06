@@ -330,12 +330,13 @@ computed:{
   height: 20rem;
   display: inline-table;
  /*  border: solid black 2px; */
-  margin: 1rem;
+  margin: 2rem;
   padding: 0.3rem;
   color: black;
   background-color: white;
   margin-top: -2rem;
   background: #fffaf6;
+
 }
  
 button{
