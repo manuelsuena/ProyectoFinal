@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const path = require('path');
+const jwt = require("jsonwebtoken")
 
 const app = express();
 const port = process.env.PORT;

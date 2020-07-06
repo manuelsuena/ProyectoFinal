@@ -93,13 +93,7 @@ export default {
 </script>
 
 <style scoped>
- .main {
-  width: 100%;
-  background-image: url(../assets/backla.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 950px;
-    height: 950px;
-}
+
 .comentarios {
   margin: 2rem;
 }
@@ -107,9 +101,10 @@ export default {
 button{
     padding: 0.7rem;
     background: rgb(101, 156, 219);
-     color: rgb(20, 2, 2);
+     color: white;
       border-radius: 2rem;
       font-size: 1.15rem;
+      border-radius: 18%;
 }
 h2{
     color: rgb(20, 93, 177);
@@ -129,7 +124,7 @@ ul {
    border: solid black 2px;
    border-radius: 2rem;
    padding: 1rem;
-   background: rgb(230, 226, 226);
+   background: #fffaf6;
    margin-left: 2rem;
    color: rgb(0, 0, 0);
 }

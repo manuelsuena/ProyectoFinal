@@ -1,5 +1,5 @@
-<template class="body">
-  <div class="main">
+<template >
+  <div >
 
          <!-- Se aplica el cambio de nombre-->
        <vue-headful title= "Login"
@@ -10,9 +10,9 @@
       <MenuCustom> </MenuCustom>
         </div>
          
+     <h2> Iniciar sesión </h2>
        <!--Elementos HTML  -->
     <div id="input"> 
-      <h2> Iniciar sesión </h2>
      <p  v-show="required"> tienes datos aun por rellenar </p>
      <label for="Email"> Email:</label>
      <br>
@@ -40,7 +40,6 @@ import axios from "axios";
 import MenuCustom from '@/components/MenuCustom.vue'
 import FooterCustom from '@/components/FooterCustom.vue'
 import Swal from "sweetalert2"
-
 export default { 
     name: 'Login',
     components:{
@@ -70,7 +69,6 @@ export default {
                localStorage.setItem("id", response.data.data.id);
                 self.$router.push("/");
               })
-
              .catch(function (error){
                 console.log(error)
              })
@@ -78,27 +76,15 @@ export default {
         },
       }
 }
-
 </script>
 
 <style scoped>
-.body{
-  height: 700px;
-}
 
-.menus{
-  margin-bottom: 10rem;
-}
-.main {
-  width: 100%;
-  background-image: url(../assets/backpla.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 790px;
-    height: 790px;
-}
 input{
     padding: 0.8rem;
     margin: 1rem;
+    color: #242424;
+     
 }
 label {
    font-size: 1.35rem;
@@ -106,34 +92,27 @@ label {
     padding: 0,2rem;
     margin: 0,2rem;
 } 
-/* label{
-  color: black;
-  font-size: 1.35rem;
-  margin-left: -1rem;
-}
-input{
-  margin-bottom: 1rem;
-    padding: 1rem;
-    margin: 1rem;
-} */
 button {
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 18%;
-    background: rgb(31, 26, 95);
-    color: white;
+    background: rgb(101, 156, 219);
+     color: white;
     margin: 0.5rem;
+    font-size: 1rem;
 }
 h2{
-
-   color: white;
+  margin-top: 2rem;
+   color: rgb(20, 93, 177);
+   margin-bottom: 4rem;
 }
-
-
 #input {
     display: inline-block;
     width: 20%;
-    padding: 1rem;
-    
+    padding: 2rem;
+    color: 242424;
+    background: #fffaf6;
 }
-
+.Footer{
+  margin-top: 6rem;
+}
 </style>

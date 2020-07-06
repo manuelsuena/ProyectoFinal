@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div>
 
               <!-- Se aplica el cambio de nombre-->
             <vue-headful title="Landing"
@@ -31,24 +31,32 @@
    <button  @click="showIdeas(index)" > ver </button>
    
      </div>
-      <div class="IdeaInd" v-show="showIdeaInd">
-
-          <div class="Usuario">
+      <div class="modal" v-show="showIdeaInd">
+        <div class="modalBox">
+          
+           <button class="closeModal" @click=" closeModal()"> atras </button>
+           
+          <div class="usuario">
               <p> <strong> Nickname: </strong>  {{user.nickname}}</p>
               <p> <strong> miembro desde: </strong> {{user.fecha_creacion}} </p>
                  <star-rating v-model = "rating" v-bind:star-size="25"> </star-rating>
-            <button @click=" closeModal()"> atras </button>
-          
-     
+           
+
+                    </div>
+          <div class="ideaBox">
         <h2> 
             {{currentIdea.titulo}}
         </h2>
         <p> <strong> Categoria: </strong> {{currentIdea.categoria}}</p>
         <p> {{currentIdea.descripcion}}</p>
+          </div>
+
+          <div class="mensajeBox"> 
 
            <Label for="Mensaje"> Mensaje: </Label>
-           <br>
-            <textarea name="mensajes" id="mensajes" cols="30" rows="3"  v-model="mensajes">Nuevo comentario:</textarea>
+    
+
+            <textarea name="mensajes" id="mensajes" cols="100" rows="10"  v-model="mensajes">Nuevo comentario:</textarea>
              <button @click="addMensaje(index)"> enviar </button>
 
          <h2> Comentarios: </h2>
@@ -56,8 +64,10 @@
             <p> <strong> Fecha: </strong> {{msg.fecha_creacion}}
         </p> 
         <p> {{msg.mensaje}}</p>
-       </div>
+
         </div>
+       </div>
+      
           </div>
            
 <!--              <div class="rating" v-show="newRating">
@@ -68,18 +78,15 @@
              <button @click="addVoto(index)"> enviar </button>
             </div> -->
             
-     
+     </div>
 
              
-
-          <!--    <Label for="Mensaje"> Mensaje: </Label>
-             <input type="text" name="mensaje" placeholder="nuevo mensaje"
-             v-model="mensajes">
-             <button @click="addMensaje(index)"> enviar </button> -->
-          
+    <div class="footer">
+       <FooterCustom> </FooterCustom>
+    </div>
             
        
- <FooterCustom> </FooterCustom>
+
   </div>
 </template>
 
@@ -176,7 +183,7 @@ computed:{
      // Funciones ver info del usuario de la idea
           getUserInd(index) {
       const self = this;
-       const id = index;
+       const id = self.ideas[index].id_idea;
        console.log(id);
       const token = localStorage.getItem("token");
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -300,17 +307,11 @@ computed:{
 </script>
 
 <style scoped>
-.main {
-  width: 100%;
-  background-image: url(../assets/backla.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 1500px;
-    height: 1500px;
-}
+
 #titulo{
-    margin: 1rem;
+    margin: 4.5rem;
     padding: 1rem;
-    color: black;
+    color: rgb(20, 93, 177);
 }
 .ideasp {
    width: 25%;
@@ -321,15 +322,17 @@ computed:{
   padding: 0.3rem;
   color: black;
   background-color: white;
+  margin-top: -2rem;
 }
  
 button{
     padding: 0.5rem;
-     background: rgb(101, 156, 219);
+       background: rgb(101, 156, 219);
+    color: white;
      border-radius: 20%;
-    color: rgb(255, 255, 255);
     margin: 1rem;
     font-size: 1rem;
+    border-radius: 18%;
 }
 #idIdeas{
   color: transparent;
@@ -344,5 +347,59 @@ button{
 .coment p {
   display: grid-row 2;
   
+}
+#buscar{
+  position: absolute;
+  color: #242424;
+  margin: 2rem;
+}
+.footer{
+  margin-top: 3rem;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+.modalBox {
+  overflow-y: auto;
+  background: #fefefe;
+  margin: 2rem auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  height: 700px;
+}
+.usuario{
+  width: 20%;
+  border: 1px solid black;
+     position: absolute;
+    top: 90%;
+    left: 50%;
+     transform: translate(120%,-440%); 
+
+}
+.ideaBox {
+  position: relative;
+  background: #fffaf6;
+    width: 70%;
+   margin-bottom: 3rem;
+   margin-top: 2rem;
+   margin-left: 2rem;
+   padding: 1rem;
+   text-align: center;
+}
+
+.mensajeBox{
+  width: 80%;
+  margin-left: 4rem;
+}
+.closeModal{
+    margin-left: 80rem;
 }
 </style>

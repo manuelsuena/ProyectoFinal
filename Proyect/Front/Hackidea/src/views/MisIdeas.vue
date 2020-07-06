@@ -35,20 +35,19 @@
        <button @click="deleteIdea(index)"> Eliminar </button> 
            </div> 
 
-      <div class="editData" v-show="showEdit">
-      <p>Modifica tus ideas</p>
-      <label for="name">Titulo:</label>
-      <input type="text" v-model="newTitulo" placeholder="titulo" />
+      <div class="modal" v-show="showEdit">
+      <h3>Modifica tu idea:</h3>
+      <label for="name">Título:</label>
+      <input type="text" v-model="newTitulo" placeholder="título" />
       <label for="name">Categoria:</label>
       <input type="text" v-model="newCategoria" placeholder="categoria" />
-      <label for="name">Descripcion:</label>
-      <textarea type="text" name="newDescripcion" id="" cols="30" rows="10" v-model="newDescripcion"> Descripción</textarea>
+      <label for="name">Descripción:</label>
+      <textarea type="text" name="newDescripcion" id="" cols="35" rows="15" v-model="newDescripcion"> Descripción</textarea>
       <br>
   
          <button @click="updateIdea(index)">Update</button>
       <button @click=" closeModal()"> cerrar </button>
-        
-
+      
          </div>
           
 
@@ -173,33 +172,28 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  width: 100%;
-  background-image: url(../assets/backla.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 1200px;
-    height: 1200px;
-}
+
 .ideas{
   width: 30%;
-  height: 20rem;
   display: inline-table;
  /*  border: solid black 2px; */
   margin: 1rem;
   padding: 0.3rem;
   color: black;
   background-color: white;
+
 }
 button{
     padding: 0.7rem;
      background: rgb(101, 156, 219);
      border-radius: 15%;
-    color: rgb(255, 255, 255);
+    color: white;
     margin: 1rem;
     font-size: 1rem;
+    border-radius: 18%;
 }
 h2{
-    color: rgb(58, 85, 160);
+    color: rgb(20, 93, 177);
     font-size: 2.25rem;
 }
 .id{
@@ -207,12 +201,43 @@ h2{
   margin-bottom: -1rem;
 }
 .footer{
-  padding: 3rem;
+ margin-top: 6rem;
 }
 h3{
   font-size: 1.35rem;
 }
-li {
-  list-style:none;
+.modal h3 {
+  font-size: 1.55rem;
+  color:rgb(20, 93, 177);
 }
+label {
+  margin: 1rem;
+  color: #242424;
+}
+.modal {
+   margin-top: -20rem;
+  position: relative;
+  background-color: #fefefe;
+  padding: 2rem;
+  border: 1px solid #888;
+   width: 100%; 
+  height: 30rem; 
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.3s;
+}
+@keyframes animatetop {
+   from {top:-800px; opacity: 0}
+  to {top: 0; opacity: 1} 
+
+}
+.modal button {
+  background: rgb(101, 156, 219);
+  margin-top: 3rem;
+  margin-right: 5rem;
+  color: white;
+  border-radius: 18%;
+}
+
+
 </style>

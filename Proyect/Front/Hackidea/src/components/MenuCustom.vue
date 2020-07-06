@@ -3,8 +3,8 @@
   <div >
     <div id="nav">
        <img src="../assets/logofinal.png" alt="logo">
-      <router-link :to="{name:'Login'}" v-show="!checkLogin()"> Login</router-link>
-       <router-link :to="{ name: 'Register'}" v-show="!checkLogin()">Registro</router-link> 
+      <router-link :to="{name:'Login'}"> Login</router-link>
+       <router-link :to="{ name: 'Register'}">Registro</router-link> 
       <router-link :to="{name:'Landing'}" > Portada</router-link> 
        <router-link :to="{name:'About'}"> About</router-link> 
         <router-link :to="{name:'Newidea'}" > Newidea </router-link>
@@ -52,24 +52,23 @@ export default {
   text-align: center;
   color: #2c3e50
 }
-
 img {
   width: 250px;
   padding: 1rem;
 }
 #nav {
-  margin-bottom: 4rem;
+ background-color: #242424;
+ margin-right: -0.5rem;
+ margin-left: -0.5rem;
 }
-
 #nav a {
   font-weight: bold;
-  color: black;
+  color: white;
   margin: 1rem;
   font-size: 1.25rem;
 }
-
 #nav a.router-link-exact-active {
-  color: red;
+  color: #FFC602;
   margin: 1rem;
 }
 .botondesplegable{
@@ -84,16 +83,25 @@ img {
   display: inline-block;
   margin-left: 6rem;
  } 
-
 .enlacesdesplegables{
   display: none;
   position: absolute;
-  background-color: white;
+   padding: 0.5rem;
+  background-color: black;
   min-width: 160px;
+  z-index: 1;
+}
+.enlacesdesplegables a {
+  color: black;
+  padding:0.5rem;
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid white;
+  font-size: 0.9rem;
 }
 
 .enlacesdesplegables a:hover {
-box-shadow: inset 5em 1em gold;
+box-shadow: inset 4em 5em #3725D3;
 } 
 .desplegable:hover .enlacesdesplegables {
   display: block;
@@ -107,6 +115,4 @@ box-shadow: inset 5em 1em gold;
   padding: 0.5rem;
   font-size: 1rem;
 }
-
 </style>
-

@@ -28,20 +28,23 @@ export function getTokenExpirationDate(encodedToken) {
 }
 // FUNCIÓN PARA COMPROBAR SI EL TOKEN ES VIGENTE O EXPIRÓ
 export function isTokenExpired(token) {
-  //Cogemos la fecha del token con la función anterior
   let expirationDate = getTokenExpirationDate(token);
-  //Y la mandamos si es menor a la actual
   return expirationDate < new Date();
 }
 
 // comprobar si el usuario esta logeado
 export function isLoggedIn() {
-  let AUTH_TOKEN_KEY = getAuthToken()
-  return !!AUTH_TOKEN_KEY && !isTokenExpired(AUTH_TOKEN_KEY) 
+  let authToken = getAuthToken();
+  return !!authToken && !isTokenExpired(authToken);
 }
 // FUNCIÓN PARA COGER EL TOKEN
 export function getAuthToken() {
   return localStorage.getItem(AUTH_TOKEN_KEY);
+}
+
+// FUNCIÓN PARA RECUPERAR EL TIPO DE USUARIO DESDE EL LOCALSTORAGE
+export function getUserType() {
+  return localStorage.getItem("type");
 }
 
 // Funciones de limpiar del localStorage los datos
@@ -60,7 +63,11 @@ export function clearUserName() {
 }
 
 export function clearidName() {
-  return localStorage.removeItem("ididea");
+  return localStorage.removeItem("nombre");
+}
+
+export function setIsName(isAdmin) {
+  localStorage.setItem(nombre, nombre);
 }
 export function logOut() {
   clearId();

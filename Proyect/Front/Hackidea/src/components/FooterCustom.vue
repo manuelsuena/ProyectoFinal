@@ -1,7 +1,10 @@
 <template>
    <!-- Se crean los elementos del HTML -->
-  <div>
-      <p> {{ copyright}}</p>
+  <div >
+      <div class="footer">  
+              <p> {{ copyright}}</p>
+      </div>
+    
   </div>
 </template>
 
@@ -11,7 +14,7 @@ export default {
  name: 'FooterCustom',
  data(){
      return{
-         copyright: 'Manuel Suena R, 2020-2020'
+         copyright: 'Manuel Suena R,  2020-2020'
      }
  }
 }
@@ -19,8 +22,21 @@ export default {
 
 <!--Estilo -->
 <style  scoped>
-p{
+
+
+.footer{
+    height: 4rem;
+    background: #242424;
     font-size: 0.7rem;
-    color: black;
+    color: white;
+     margin-right: -0.5rem;
+ margin-left: -0.5rem;
 }
+.footer p{
+ padding: 1.5rem;
+ text-align:center;
+}
+
+
+
 </style>

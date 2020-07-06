@@ -44,7 +44,7 @@ async function userIsAuthenticated(req, res, next) {
     const [
       result
     ] = await connection.query(
-      'SELECT last_password_update FROM usuario WHERE id_usuario=?',
+      'SELECT role, last_password_update FROM usuario WHERE id_usuario=?',
       [id]
     );
 

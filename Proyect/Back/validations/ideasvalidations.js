@@ -14,7 +14,7 @@ const ideaSchema = joi.object().keys({
       ),
     descripcion: joi.string()
       .min(2)
-      .max(500)
+      .max(5000)
       .required()
       .error(
         generateError(

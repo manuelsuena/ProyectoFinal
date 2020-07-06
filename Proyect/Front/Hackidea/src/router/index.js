@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Error from '../views/Error.vue'
+import Login from '../views/Login.vue';
 //importamos la función de verificar si esta loggeado
 import { isLoggedIn } from "../api/utils.js";
 
@@ -117,16 +118,24 @@ const router = new VueRouter({
 })
 
 // COMPROBANDO CADA PÁGINA POR SI LA PERSONA ESTÁ LOGUEADA //
+// COMPROBAMOS LAS URLS Y ANALIZAMOS EL USUARIO
 router.beforeEach((to, from, next) => {
-  // SI LA RUTA ES PRIVADA Y LA PERSONA NO TIENE TOKEN //
+  //Si la ruta no es pública y el usuario no está logueado...
   if (!to.meta.allowAnonymous && !isLoggedIn()) {
-  next({
-  path: "/login",
-  query: { redirect: to.fullPath },
-  });
+    next({
+      //Lo redirigimos a la página de login
+      path: "/login",
+      query: { redirect: to.fullPath },
+    });
+    Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: "Lo sentimos. Esta ruta es sólo para usuarios resgistrados",
+      showConfirmButton: true,
+    });
   } else {
-  next();
+    next();
   }
-  });
+});
 
 export default router

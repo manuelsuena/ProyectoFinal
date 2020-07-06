@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div>
 
               <!-- Se aplica el cambio de nombre-->
             <vue-headful title="Profile"
@@ -19,7 +19,7 @@
    <button @click="showEditUser()"> modificar</button>
 
       </div>
-        <div class="editData" v-show="showEdit">
+        <div class="modal" v-show="showEdit">
       <h3>Modifica tus datos:</h3>
       <label for="name">Nombre:</label>
       <input type="text" v-model="newNombre" placeholder="nombre" />
@@ -29,6 +29,7 @@
       <input type="text" v-model="newNickname" placeholder="nickname" />
       <br />
       <button @click="updateUser()">Update</button>
+      <button @click="closeModal()"> Cerrar</button>
    
       <br />
       </div>
@@ -36,9 +37,6 @@
 <div class="footer">
  <FooterCustom> </FooterCustom>
 </div>
-
-
-
   </div>
 </template>
 
@@ -85,8 +83,9 @@ export default {
           console.error(error.response.data.message);
         });
     },
-          showIdeas(index) {
-      this.showIdea = true;
+
+    closeModal(){
+      this.showEdit = false;
     },
 
         showEditUser(index) {
@@ -127,41 +126,46 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  width: 100%;
-  background-image: url(../assets/backla.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 950px;
-    height: 950px;
-    color: black;
-}
-
 
 button{
     padding: 0.7rem;
-    background: rgb(61, 150, 223);
-    color: black;
+    background: rgb(101, 156, 219);
+    color: white;
     font-size: 1rem;
      margin: 1.5rem;
+     border-radius: 18%;
 }
 h2{
-    color: rgb(0, 101, 216);
+    color: rgb(20, 93, 177);
+    margin-bottom: 4rem;
   
 }
-
-.editData {
-  margin: 1rem;
-  background: white;
-  width: 60%;
-  margin-left: 20rem;
-  padding: 1rem;
+.modal {
+   margin-top: -18rem;
+  position: relative;
+  background-color: #fefefe;
+  padding: 2rem;
+  border: 1px solid #888;
+   width: 100%; 
+  height: 30rem; 
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.3s;
 }
 
-.editData h3 {
+.modal button {
+    margin-top: 3rem;
+    border-radius: 18%;
+}
+
+.modal h3 {
   color:  rgb(0, 101, 216);
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
+
 .footer{
-  padding: 12rem;
+  margin-top: 10rem;
 }
 
 .dataIni{
@@ -172,6 +176,9 @@ h2{
 }
 input{
   margin: 0.5rem;
+  margin-top: 2rem;
 }
+
+
 </style>
 

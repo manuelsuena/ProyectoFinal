@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div>
 
               <!-- Se aplica el cambio de nombre-->
             <vue-headful title="Register"
@@ -35,11 +35,13 @@
                 <Label for="nickname"> Nickname: </Label>
              <input type="nickname" name="nickname" placeholder="nickname del usuario"
              v-model="nickname">
-    
+
          </div>
-                 <button @click="addUsuario(nombre, apellidos, email, contrasena, nickname)">
+          <div>
+            <button @click="addUsuario(nombre, apellidos, email, contrasena, nickname)">
             Crear
         </button>
+          </div>
         </div>
           
  <FooterCustom> </FooterCustom>
@@ -134,43 +136,45 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  width: 100%;
-  background-image: url(../assets/backla.png);
-    background-repeat: no-repeat;
-    background-size: 1700px 950px;
-    height: 950px;
-}
+
 input{
     padding: 0.8rem;
     margin: 1rem;
+    border-radius:3px;
+     border: solid black 2px; 
 }
 label {
-    font-size: 1.15rem;
     display: block;
+    font-size: 1.15rem;
     padding: 0,2rem;
     margin: 0,2rem;
-    color: rgb(15, 15, 128);
+    color: #242424;
 } 
 #input {
-    display: block;
+     display: block;
     margin-left: 1.5rem;
 }
 #contenedor {
-    display: inline-block;
-    width: 35%;
+    background: #fffaf6;
+     display: inline-block;
+    width: 30%;
     padding: 2rem;
 /*     border: solid black 2px; */
     margin: 1rem;
     margin-bottom: 2rem;
 }
 button{
-    padding: 1rem;
-    background: blue;
+    
+    padding: 0.5rem;
+    background: rgb(101, 156, 219);
     color: white;
+    font-size: 1rem;
+    border-radius: 18%;
+    margin-top: 1rem;
+
 }
 h2{
-    color: black;
+    color: rgb(20, 93, 177);
 }
 </style>
 
