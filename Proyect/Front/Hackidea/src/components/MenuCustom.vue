@@ -4,7 +4,7 @@
     <div id="nav">
        <img src="../assets/logofinal.png" alt="logo">
       <router-link :to="{name:'Login'}" v-show="!checkLogin()"> HOME</router-link>
-       <router-link :to="{ name: 'Register'}">REGISTRO</router-link> 
+       <router-link :to="{ name: 'Register'}" v-show="!checkLogin()">REGISTRO</router-link> 
       <router-link :to="{name:'Landing'}" > PORTADA </router-link> 
        <router-link :to="{name:'About'}"> ABOUT</router-link> 
         <router-link :to="{name:'Newidea'}" class="new"> NEWIDEA </router-link>

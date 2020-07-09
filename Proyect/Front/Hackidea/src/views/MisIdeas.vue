@@ -182,7 +182,7 @@ export default {
   color: black;
   background-color: white;
   margin-top: -1rem;
-  background: #fffaf6;
+  background: #f5ece5;
 }
 button{
     padding: 0.7rem;

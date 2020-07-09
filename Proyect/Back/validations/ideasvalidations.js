@@ -61,7 +61,7 @@ const ideaSchema = joi.object().keys({
   const mensajeSchema = joi.object().keys({
     mensaje: joi.string()
       .min(1)
-      .max(255)
+      .max(1000)
       .required()
       .error(
         generateError(

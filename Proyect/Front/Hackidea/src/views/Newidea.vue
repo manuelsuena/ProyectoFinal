@@ -16,8 +16,16 @@
              <p v-show="required"> tienes datos aun por rellenar </p>
 
                <Label for="categoria"> Categoria: </Label>
-             <input type="categoria"  minlength="2" maxlength="20" name="categoria" placeholder="categoria de la idea"
-             v-model="categoria">
+             <!-- <input type="categoria"  minlength="2" maxlength="20" name="categoria" placeholder="categoria de la idea"
+             v-model="categoria"> -->
+
+             <select v-model="categoria">
+                 <option> Ambiental </option>
+                 <option> Educación </option>
+                 <option> Finanzas </option>
+                 <option> Tecnología </option>
+             </select>
+
 
                 <Label for="título"> Título: </Label>
              <input type="titulo" minlength="2" maxlength="50" name="titulo" placeholder="título de la idea"
@@ -102,7 +110,7 @@ export default {
 
              Swal.fire({
              icon: "success",
-             title: 'Idea creado',
+             title: 'Idea creada',
              text: "Ve a la página Mis Ideas si quieres observarla"
               })
                } else {
@@ -150,7 +158,7 @@ label {
 /*     border: solid black 2px; */
     margin: 1rem;
     margin-bottom: 2rem;
-     background: #fffaf6;
+     background: #f5ece5;
 }
 button{
     border-radius: 20%;

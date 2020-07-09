@@ -57,7 +57,7 @@
            <Label for="Mensaje"> Mensaje: </Label>
     
 
-            <textarea name="mensajes" id="mensajes" cols="100" rows="10"  v-model="mensajes">Nuevo comentario:</textarea>
+            <textarea name="mensajes" id="mensajes" cols="100" rows="10" minlength="1" maxlength="999" v-model="mensajes">Nuevo comentario:</textarea>
             <br>
              <button @click="addMensaje(index)"> enviar </button>
 
@@ -247,8 +247,8 @@ computed:{
              })
              Swal.fire({
              icon: "success",
-             title: 'Mensaje creado',
-             text: "Ya puedes ver el nuevo mensaje que realizaste"
+             title: 'voto creado',
+             text: "Ya puedes ver tu voto de la idea"
               })
              },
              
@@ -335,7 +335,7 @@ computed:{
   color: black;
   background-color: white;
   margin-top: -2rem;
-  background: #fffaf6;
+  background: #f5ece5;
 
 }
  

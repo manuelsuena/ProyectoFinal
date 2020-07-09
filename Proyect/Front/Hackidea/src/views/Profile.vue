@@ -171,14 +171,15 @@ h2{
 }
 
 .footer{
-  margin-top: 10rem;
+  margin-top: 9rem;
 }
 
 .dataIni{
-  background: white;
+  background: #f5ece5;
   width: 25%;
   padding: 1rem;
   display: inline-block;
+  margin-top: 2rem;
 }
 input{
   margin: 0.5rem;

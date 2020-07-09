@@ -155,7 +155,7 @@ label {
     margin-left: 1.5rem;
 }
 #contenedor {
-    background: #fffaf6;
+    background: #f5ece5;
      display: inline-block;
     width: 30%;
     padding: 2rem;
